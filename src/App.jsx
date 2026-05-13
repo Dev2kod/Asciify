@@ -197,16 +197,13 @@ function AppBody() {
               transition={{ duration: 0.4 }}
               className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6"
             >
-              {/* Left column — sidebar pins on desktop; image stays visible while controls scroll */}
-              <aside
-                className="flex flex-col gap-4 lg:sticky lg:top-[72px]"
-                style={{ maxHeight: 'calc(100vh - 92px)' }}
-              >
+              {/* Left column — pinned with internal scroll on desktop; flows naturally on mobile */}
+              <aside className="flex flex-col gap-4 lg:sticky lg:top-[72px] lg:max-h-[calc(100vh-92px)]">
                 <div className="flex-shrink-0">
                   <ImageUploader onImageLoad={handleImageLoad} currentImage={currentImage} />
                 </div>
 
-                <div className="card p-4 flex-1 min-h-0 overflow-y-auto overscroll-contain">
+                <div className="card p-4 lg:flex-1 lg:min-h-0 lg:overflow-y-auto lg:overscroll-contain">
                   <ControlPanel
                     settings={settings}
                     onSettingsChange={setSettings}
